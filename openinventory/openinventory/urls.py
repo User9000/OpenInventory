@@ -16,19 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from updates.views import update_model_detail_view, JsonCBV, JsonCBV2, SerializedView, SerializedListView, SerializedDetailView
 
-from updates.views import update_model_detail_view, JsonCBV,JsonCBV2, SerializedView, SerializedListView,SerializedDetailView
+from status.views import *
 
+from device.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'', update_model_detail_view),
-    path(r'json/cbv/', JsonCBV.as_view()),
-    path(r'json/cbv2/', JsonCBV2.as_view()),
-     path(r'json/ser/', SerializedView.as_view()),
-     path(r'json/ser2/', SerializedListView.as_view()),
-      path(r'json/detail/', SerializedDetailView.as_view()),
+    # path(r'', update_model_detail_view),
+    # path(r'json/cbv/', JsonCBV.as_view()),
+    # path(r'json/cbv2/', JsonCBV2.as_view()),
+    # path(r'json/ser/', SerializedView.as_view()),
+    # path(r'json/ser2/', SerializedListView.as_view()),
+    # path(r'json/detail/', SerializedDetailView.as_view()),
+    # path(r'api/updates/', include('updates.api.urls')),
+    # path(r'api/status/', include('status.api.urls')),
+    path(r'api/device/', include('device.api.urls'))
 
-      path(r'api/updates/', include('updates.api.urls'))
-     # path(r'api/updates/list/', include('updates.api.urls'))
+    # path(r'api/updates/list/', include('updates.api.urls'))
 ]
