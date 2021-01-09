@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from .views import StatusListSearchAPIView, StatusDeleteAPIView, StatusDetailAPIView, StatusUpdateAPIView, StatusAPIView, StatusCreateAPIView
+from .views import StatusListSearchAPIView, StatusDeleteAPIView, StatusAPIView, StatusDetailAPIView, StatusUpdateAPIView, StatusAPIView, StatusCreateAPIView
 urlpatterns = [
     re_path(r'^$', StatusAPIView.as_view()),
     #re_path(r'^create/$', StatusCreateAPIView.as_view()),
     #re_path(r'^(?P<id>\d+)/$', StatusDetailAPIView.as_view()),
-    #re_path(r'^(?P<id>.*)/$', StatusDetailAPIView.as_view()),
+    re_path(r'^(?P<id>.*)/$', StatusDetailAPIView.as_view()),
     #re_path(r'^(?P<pk>\d+)/update/$', StatusUpdateAPIView.as_view()),
     #re_path(r'^(?P<pk>\d+)/delete/$', StatusDeleteAPIView.as_view()),
 ]

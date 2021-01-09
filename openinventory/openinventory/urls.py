@@ -30,8 +30,8 @@ urlpatterns = [
     # path(r'json/ser/', SerializedView.as_view()),
     # path(r'json/ser2/', SerializedListView.as_view()),
     # path(r'json/detail/', SerializedDetailView.as_view()),
-    # path(r'api/updates/', include('updates.api.urls')),
-    # path(r'api/status/', include('status.api.urls')),
+    path(r'api/updates/', include('updates.api.urls')),
+    path(r'api/status/', include('status.api.urls')),
     path(r'api/device/', include('device.api.urls'))
 
     # path(r'api/updates/list/', include('updates.api.urls'))

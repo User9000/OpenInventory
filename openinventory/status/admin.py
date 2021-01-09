@@ -12,4 +12,4 @@ class StatusAdmin(admin.ModelAdmin):
     form = StatusForm
 
 
-admin.site.register(StatusModel)
+admin.site.register(StatusModel, StatusAdmin)
