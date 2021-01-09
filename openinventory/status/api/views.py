@@ -1,36 +1,21 @@
 from rest_framework import generics, mixins, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
 from status.models import Status
 from .serializers import StatusSerializer
-
 from django.shortcuts import get_object_or_404
-
-
 #authentication rest package related
 from rest_framework.authentication import SessionAuthentication
-
 #error class
-
-
-
 import json
-
-
 #return boolean
 def is_json(json_data):
     try:
-
         is_valid = json.loads(json_data)
         is_valid = True
-
     except ValueError:
         is_valid = False
-
     return is_valid
-
-
 
 class StatusDetailAPIView(
     mixins.UpdateModelMixin,
@@ -41,9 +26,7 @@ class StatusDetailAPIView(
     authentication_classes = []
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
-    lookup_field = 'id'
-
-    
+    lookup_field = 'id'    
 
     def put(self,request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
@@ -68,7 +51,7 @@ class StatusAPIView(mixins.CreateModelMixin,
                     generics.ListAPIView):  #Create and List [using mixin]
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    authentication_classes = [SessionAuthentication]
+    #authentication_classes = [SessionAuthentication]
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
     passed_id = None

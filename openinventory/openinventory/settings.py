@@ -127,3 +127,6 @@ import os
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static-server", 'media_root')
 MEDIA_URL = '/media/'
+
+
+from openinventory.restconf.main import *

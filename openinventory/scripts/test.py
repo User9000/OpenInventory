@@ -68,7 +68,15 @@ def do_obj_delete():  #  --> creates an object in DJANGO database.
     return r.text
 
 
-print(get_list())
+#print(get_list())
 #print(do_obj_delete())
 #print(do_obj_update())
 #print(create_update())
+
+get_endpoint = BASE_URL +  str(16)
+
+
+
+r = requests .get(get_endpoint)
+
+print(r.text)

@@ -22,6 +22,9 @@ from status.views import *
 
 from device.views import *
 
+from rest_framework_jwt.views import obtain_jwt_token
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path(r'', update_model_detail_view),
@@ -32,7 +35,8 @@ urlpatterns = [
     # path(r'json/detail/', SerializedDetailView.as_view()),
     path(r'api/updates/', include('updates.api.urls')),
     path(r'api/status/', include('status.api.urls')),
-    path(r'api/device/', include('device.api.urls'))
+    path(r'api/device/', include('device.api.urls')),
+    path(r'api/auth/jwt/',obtain_jwt_token),
 
     # path(r'api/updates/list/', include('updates.api.urls'))
 ]
