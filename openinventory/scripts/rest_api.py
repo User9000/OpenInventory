@@ -46,7 +46,7 @@ def do_img(method='get', data={}, is_json=True, img_path=None):
 #get_endpoint = ENDPOINT +  str(16)
 
 post_headers = {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json'
 
 }
 
@@ -56,20 +56,26 @@ data  = {
     'password': 'localuser1!'
 }
 
-AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
-
-r1 = requests.post(AUTH_ENDPOINT, data=data)
-
-token = r1.json()['token']
-
-headers = {
+#AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
+AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/'
 
 
-    #"Content-Type": "application/json",
-    "Authorization": "JWT " + token,
+r1 = requests.post(AUTH_ENDPOINT, data=json.dumps(data), headers=post_headers)
+
+print(r1.text)
+# user_from_app = r1.json()['username']
+
+# auth_expiration_data = r1.json()['expiration']
+
+# print(token, user_from_app, auth_expiration_data)
+# headers = {
 
 
-}
+#     #"Content-Type": "application/json",
+#     "Authorization": "JWT " + token,
+
+
+# }
 
 
 
@@ -79,29 +85,29 @@ headers = {
 
 #r2 = requests.put(ENDPOINT, data=post_data, headers=post_headers)
 
-with open(image_path, 'rb') as image:
-    file_data = {
-                'image': image
-            }
+# with open(image_path, 'rb') as image:
+#     file_data = {
+#                 'image': image
+#             }
 
-    data ={
-        "content": "random data"
-        }
-    r = requests.post(ENDPOINT, data=data, headers=headers, files=file_data)
-    print(r.text)
-
-
+#     data ={
+#         "content": "random data"
+#         }
+#     r = requests.post(ENDPOINT, data=data, headers=headers, files=file_data)
+#     print(r.text)
 
 
 
-with open(image_path, 'rb') as image:
-    file_data = {
-                'image': image
-            }
 
-    data ={
-        "content": "random data"
-        }
-    json_data = json.dumps(data)
-    r = requests.put(ENDPOINT + str(37) + "/", data=data, headers=headers, files=file_data)
-    print(r.text)
+
+# with open(image_path, 'rb') as image:
+#     file_data = {
+#                 'image': image
+#             }
+
+#     data ={
+#         "content": "random data"
+#         }
+#     json_data = json.dumps(data)
+#     r = requests.put(ENDPOINT + str(37) + "/", data=data, headers=headers, files=file_data)
+#     print(r.text)

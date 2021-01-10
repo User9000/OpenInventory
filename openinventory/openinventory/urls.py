@@ -22,7 +22,7 @@ from status.views import *
 
 from device.views import *
 
-from rest_framework_jwt.views import obtain_jwt_token
+#from rest_framework_jwt.views import obtain_jwt_token
 
 
 
