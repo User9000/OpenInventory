@@ -53,10 +53,10 @@ post_headers = {
 
 data  = {
 
-    'username' : 'admin4',
+    'username' : 'admin10',
     'password': 'localuser1!',
         'password2': 'localuser1!',
-        'email': 'admin4@hotmail.com'
+        'email': 'admin10@hotmail.com'
 }
 
 #AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
