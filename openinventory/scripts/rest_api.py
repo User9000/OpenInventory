@@ -47,16 +47,16 @@ def do_img(method='get', data={}, is_json=True, img_path=None):
 
 post_headers = {
         'Content-Type': 'application/json',
-        #'Authorization': "JWT " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjEwMzM1ODgzLCJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwib3JpZ19pYXQiOjE2MTAzMzU1ODN9.leYM-SyjaVpifOLcaXsHCCXGSa5LKFnmzD-Bg_ACnnA',
+        'Authorization': "JWT " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbjE3IiwiZXhwIjoxNjEwMzQzODg2LCJlbWFpbCI6ImFkbWluMTdAaG90bWFpbC5jb20iLCJvcmlnX2lhdCI6MTYxMDM0MzU4Nn0.0B1aje9kKpOhYGe7IafDsm_ekVSDEYXHssyYHj7LeqI',
 
 }
 
 data  = {
 
-    'username' : 'admin10',
+    'username' : 'admin18',
     'password': 'localuser1!',
         'password2': 'localuser1!',
-        'email': 'admin10@hotmail.com'
+        'email': 'admin18@hotmail.com'
 }
 
 #AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
