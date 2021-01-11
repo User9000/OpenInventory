@@ -46,23 +46,29 @@ def do_img(method='get', data={}, is_json=True, img_path=None):
 #get_endpoint = ENDPOINT +  str(16)
 
 post_headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        #'Authorization': "JWT " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjEwMzM1ODgzLCJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwib3JpZ19pYXQiOjE2MTAzMzU1ODN9.leYM-SyjaVpifOLcaXsHCCXGSa5LKFnmzD-Bg_ACnnA',
 
 }
 
 data  = {
 
-    'username' : 'admin',
-    'password': 'localuser1!'
+    'username' : 'admin4',
+    'password': 'localuser1!',
+        'password2': 'localuser1!',
+        'email': 'admin4@hotmail.com'
 }
 
 #AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
-AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/'
+AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/register/'
 
 
 r1 = requests.post(AUTH_ENDPOINT, data=json.dumps(data), headers=post_headers)
 
-print(r1.text)
+
+token = r1.json()
+
+print(token)
 # user_from_app = r1.json()['username']
 
 # auth_expiration_data = r1.json()['expiration']

@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     #Third party
     'rest_framework',
     #Applicaton
+    'accounts',
     'updates',
     'status',
     'device',
-    'accounts',
+ 
 ]
 
 MIDDLEWARE = [
