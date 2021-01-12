@@ -1,5 +1,5 @@
 import requests
-ENDPOINT = "http://127.0.0.1:5555/api/status/"
+ENDPOINT = "http://127.0.0.1:5555/api/status/52/"
 import os
 import json
 image_path = os.path.join(os.getcwd(), "prius.PNG")
@@ -47,48 +47,53 @@ def do_img(method='get', data={}, is_json=True, img_path=None):
 
 post_headers = {
         'Content-Type': 'application/json',
-        'Authorization': "JWT " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbjE3IiwiZXhwIjoxNjEwMzQzODg2LCJlbWFpbCI6ImFkbWluMTdAaG90bWFpbC5jb20iLCJvcmlnX2lhdCI6MTYxMDM0MzU4Nn0.0B1aje9kKpOhYGe7IafDsm_ekVSDEYXHssyYHj7LeqI',
+        #'Authorization': "JWT " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJhZG1pbjE3IiwiZXhwIjoxNjEwMzQzODg2LCJlbWFpbCI6ImFkbWluMTdAaG90bWFpbC5jb20iLCJvcmlnX2lhdCI6MTYxMDM0MzU4Nn0.0B1aje9kKpOhYGe7IafDsm_ekVSDEYXHssyYHj7LeqI',
 
 }
 
 data  = {
 
-    'username' : 'admin18',
+    'username' : 'admin14',
     'password': 'localuser1!',
         'password2': 'localuser1!',
-        'email': 'admin18@hotmail.com'
+        'email': 'admin14@hotmail.com'
 }
 
-#AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
-AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/register/'
+AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/jwt/'
+#AUTH_ENDPOINT = 'http://127.0.0.1:5555/api/auth/register/'
 
 
 r1 = requests.post(AUTH_ENDPOINT, data=json.dumps(data), headers=post_headers)
 
+#print(r1.json())
+token = r1.json()['token']
+headers2 = {
+    #"Content-Type": "application/json",
+    "Authorization": "JWT "  + token
+}
+data2 =  { 
+    'content' : 'this new content post'
+}
 
-token = r1.json()
+with open(image_path, 'rb') as image:
+            file_data = {
+                'image': image
+            }
+            r2 = requests.get(ENDPOINT, data=data2, headers=headers2)
 
-print(token)
+
+#r2 = requests.post(ENDPOINT, data=json.dumps(data2), headers=headers2)
+            print(r2.text)
 # user_from_app = r1.json()['username']
-
 # auth_expiration_data = r1.json()['expiration']
-
 # print(token, user_from_app, auth_expiration_data)
 # headers = {
-
-
 #     #"Content-Type": "application/json",
 #     "Authorization": "JWT " + token,
-
-
 # }
-
-
-
 #posted_response = requests.post(ENDPOINT,data=post_data, headers=headers )
 #r1 = requests .get(get_endpoint)
 #print(posted_response.text)
-
 #r2 = requests.put(ENDPOINT, data=post_data, headers=post_headers)
 
 # with open(image_path, 'rb') as image:

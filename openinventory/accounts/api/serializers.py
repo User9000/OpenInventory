@@ -1,21 +1,27 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-
-
 from rest_framework_jwt.settings import api_settings
 from django.conf import settings
 import datetime
-
 from django.utils import timezone
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 jwt_response_payload_handler = api_settings.JWT_RESPONSE_PAYLOAD_HANDLER
 
-
 expires_delta = settings.JWT_AUTH['JWT_REFRESH_EXPIRATION_DELTA']
 
 User = get_user_model()
+
+class UserPublicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields =[
+
+            'id',
+            'username'
+        ]
+
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     #password = serializers.CharField(style={'input_type': 'password'}, write_only=True )

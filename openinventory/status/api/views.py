@@ -4,6 +4,11 @@ from rest_framework.response import Response
 from status.models import Status
 from .serializers import StatusSerializer
 from django.shortcuts import get_object_or_404
+
+
+#permissions
+from accounts.api.permissions import cIsOwnerOrReadOnly
+
 #authentication rest package related
 from rest_framework.authentication import SessionAuthentication
 #error class
@@ -22,7 +27,7 @@ class StatusDetailAPIView(
     mixins.DestroyModelMixin,
     generics.RetrieveAPIView):
 
-    permission_classes = []
+    permission_classes = [cIsOwnerOrReadOnly]
     authentication_classes = []
     queryset = Status.objects.all()
     serializer_class = StatusSerializer

@@ -4,9 +4,13 @@ from status.models import Status
     Serializers - > JSON
     Serializers - > validate data
 '''
+from accounts.api.serializers import UserPublicSerializer
+
 
 
 class StatusSerializer(serializers.ModelSerializer):
+
+    user = UserPublicSerializer(read_only=True)
     class Meta:
         model = Status
         fields = ['id', 'user', 'content', 'image']
