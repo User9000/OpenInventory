@@ -8,6 +8,18 @@ from accounts.api.serializers import UserPublicSerializer
 
 
 
+class StatusInlineSerializer(serializers.ModelSerializer):
+
+    uri = serializers.SerializerMethodField(read_only=True)
+    class Meta:
+        model = Status
+        fields = ['id','uri','content', 'image']
+     
+
+    def get_uri(self,obj):
+        return "/api/status/{id}".format(id=obj.id)
+
+
 class StatusSerializer(serializers.ModelSerializer):
 
     user = UserPublicSerializer(read_only=True)

@@ -38,6 +38,7 @@ urlpatterns = [
     path(r'api/status/', include('status.api.urls')),
     path(r'api/device/', include('device.api.urls')),
     path(r'api/auth/', include('accounts.api.urls')),
+    path(r'api/user/', include('accounts.api.user.urls', namespace='api-user')),
    # path(r'api/auth/jwt/',obtain_jwt_token),
 
     # path(r'api/updates/list/', include('updates.api.urls'))

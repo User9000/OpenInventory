@@ -13,6 +13,7 @@ expires_delta = settings.JWT_AUTH['JWT_REFRESH_EXPIRATION_DELTA']
 
 User = get_user_model()
 
+
 class UserPublicSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField(read_only=True)
     class Meta:
