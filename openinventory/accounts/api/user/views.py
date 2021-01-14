@@ -34,8 +34,10 @@ class UserDetailApiView(generics.RetrieveAPIView):
     lookup_field = 'username'
 
 
-class UserStatusPagination(pagination.PageNumberPagination):
-    page_size= 4
+
+# #Custom class for pagination
+# class UserStatusPagination(pagination.PageNumberPagination):
+#     page_size= 4
 
     
 
@@ -46,7 +48,7 @@ class UserStatusApiView(generics.ListAPIView):
     #permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
    
     serializer_class = StatusInlineSerializer
-    pagination_class= UserStatusPagination
+    #pagination_class= UserStatusPagination
     
 
     def get_queryset(self, *args, **kwargs):

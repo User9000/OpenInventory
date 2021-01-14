@@ -5,6 +5,11 @@ from status.models import Status
 from .serializers import StatusSerializer
 from django.shortcuts import get_object_or_404
 
+#Reverse
+
+
+
+
 
 #permissions
 from accounts.api.permissions import cIsOwnerOrReadOnly
@@ -60,6 +65,7 @@ class StatusAPIView(mixins.CreateModelMixin,
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
     passed_id = None
+    search_fields = ('user__username', 'content')
 
     def get_queryset(self):
         request = self.request

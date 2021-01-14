@@ -7,7 +7,7 @@ import datetime
 
 from status.api.serializers import StatusInlineSerializer
 
-
+from rest_framework.reverse import reverse as api_reverse
 User = get_user_model()
 
 class UserDetailSerializer(serializers.ModelSerializer):
@@ -23,8 +23,12 @@ class UserDetailSerializer(serializers.ModelSerializer):
             'url',
             'status_list'
         ]
+    # def get_url(self,obj):
+    #     return "/api/users/{id}".format(id=obj.id)
+
     def get_url(self,obj):
-        return "/api/users/{id}".format(id=obj.id)
+        request = self.context.get('request')
+        return api_reverse("api-user:detail", kwargs={"username":obj.username}, request=request)
 
     def get_status_list(self,obj):
         qs =  obj.status_set.all() #Status.objects.filter(user=obj)
